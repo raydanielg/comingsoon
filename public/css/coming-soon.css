@@ -631,10 +631,18 @@ img {
         width: 100%;
     }
 
-    .carousel-arrow {
+    .showcase-arrow {
         opacity: 1;
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .showcase-arrow.prev {
+        left: 0;
+    }
+
+    .showcase-arrow.next {
+        right: 0;
     }
 
     .footer .container {
@@ -654,12 +662,7 @@ img {
         min-width: 0;
     }
 
-    .carousel-dots {
-        gap: 8px;
-    }
-
-    .carousel-dot {
-        width: 8px;
-        height: 8px;
+    .showcase-dots {
+        gap: 6px;
     }
 }
