@@ -24,6 +24,41 @@
         <div class="hero-bg"></div>
         <div class="container">
 
+            <!-- Image Showcase (transparent, no card) -->
+            <div class="showcase" id="carousel">
+                <div class="showcase-track" id="carouselTrack">
+                    <div class="showcase-slide active">
+                        <img src="images/o.png" alt="Preview 1">
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="images/img2.png" alt="Preview 2">
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="images/img3.png" alt="Preview 3">
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="images/img4.png" alt="Preview 4">
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="images/img5.png" alt="Preview 5">
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="images/img6.png" alt="Preview 6">
+                    </div>
+                </div>
+
+                <!-- Arrows -->
+                <button class="showcase-arrow prev" id="prevBtn" aria-label="Previous">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button class="showcase-arrow next" id="nextBtn" aria-label="Next">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                <!-- Dots -->
+                <div class="showcase-dots" id="carouselDots"></div>
+            </div>
+
             <!-- Badge -->
             <div class="coming-badge">
                 <span class="dot"></span>
@@ -39,44 +74,6 @@
             <p class="coming-subtitle">
                 We're crafting something extraordinary. A platform that will change the way you build, deploy, and scale. Be the first to know when we launch.
             </p>
-
-            <!-- Image Carousel -->
-            <div class="carousel" id="carousel">
-                <div class="carousel-track" id="carouselTrack">
-                    <div class="carousel-slide active">
-                        <img src="images/o.png" alt="Preview 1">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/img2.png" alt="Preview 2">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/img3.png" alt="Preview 3">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/img4.png" alt="Preview 4">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/img5.png" alt="Preview 5">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="images/img6.png" alt="Preview 6">
-                    </div>
-                </div>
-
-                <!-- Arrows -->
-                <button class="carousel-arrow prev" id="prevBtn" aria-label="Previous">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
-                </button>
-                <button class="carousel-arrow next" id="nextBtn" aria-label="Next">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                </button>
-
-                <!-- Dots -->
-                <div class="carousel-dots" id="carouselDots"></div>
-
-                <!-- Progress bar -->
-                <div class="carousel-progress" id="carouselProgress"></div>
-            </div>
 
             <!-- Countdown -->
             <div class="countdown" id="countdown">
@@ -128,9 +125,8 @@
 <script>
 (function() {
     // ===== Carousel =====
-    const slides = document.querySelectorAll('.carousel-slide');
+    const slides = document.querySelectorAll('.showcase-slide');
     const dotsContainer = document.getElementById('carouselDots');
-    const progressBar = document.getElementById('carouselProgress');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     let currentSlide = 0;
@@ -157,10 +153,6 @@
         currentSlide = (index + slides.length) % slides.length;
         slides[currentSlide].classList.add('active');
         dots[currentSlide].classList.add('active');
-        // Restart progress bar
-        progressBar.classList.remove('running');
-        void progressBar.offsetWidth;
-        progressBar.classList.add('running');
     }
 
     function nextSlide() { goToSlide(currentSlide + 1); }
@@ -168,13 +160,10 @@
 
     function startTimer() {
         slideInterval = setInterval(nextSlide, slideDuration);
-        progressBar.classList.add('running');
     }
 
     function resetTimer() {
         clearInterval(slideInterval);
-        progressBar.classList.remove('running');
-        void progressBar.offsetWidth;
         startTimer();
     }
 
@@ -185,7 +174,6 @@
     const carousel = document.getElementById('carousel');
     carousel.addEventListener('mouseenter', function() {
         clearInterval(slideInterval);
-        progressBar.classList.remove('running');
     });
     carousel.addEventListener('mouseleave', function() {
         startTimer();
