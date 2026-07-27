@@ -47,14 +47,6 @@
                     </div>
                 </div>
 
-                <!-- Arrows -->
-                <button class="showcase-arrow prev" id="prevBtn" aria-label="Previous">
-                    <svg width="8" height="8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
-                </button>
-                <button class="showcase-arrow next" id="nextBtn" aria-label="Next">
-                    <svg width="8" height="8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
-                </button>
-
                 <!-- Dots -->
                 <div class="showcase-dots" id="carouselDots"></div>
             </div>
@@ -126,8 +118,6 @@
     // ===== Carousel =====
     const slides = document.querySelectorAll('.showcase-slide');
     const dotsContainer = document.getElementById('carouselDots');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
     let currentSlide = 0;
     let slideInterval;
     const slideDuration = 5000;
@@ -165,18 +155,6 @@
         clearInterval(slideInterval);
         startTimer();
     }
-
-    nextBtn.addEventListener('click', function() { nextSlide(); resetTimer(); });
-    prevBtn.addEventListener('click', function() { prevSlide(); resetTimer(); });
-
-    // Pause on hover
-    const carousel = document.getElementById('carousel');
-    carousel.addEventListener('mouseenter', function() {
-        clearInterval(slideInterval);
-    });
-    carousel.addEventListener('mouseleave', function() {
-        startTimer();
-    });
 
     startTimer();
 
