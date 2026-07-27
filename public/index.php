@@ -104,14 +104,32 @@
         <div class="container">
             <p>&copy; <?php echo date('Y'); ?> Itwillbe. All rights reserved.</p>
             <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Contact</a>
+                <a href="privacy.php">Privacy</a>
+                <a href="terms.php">Terms</a>
+                <a href="contact.php">Contact</a>
             </div>
         </div>
     </footer>
 
 </div>
+
+<script>
+// ===== Copy Protection =====
+document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+document.addEventListener('copy', function(e) { e.preventDefault(); });
+document.addEventListener('cut', function(e) { e.preventDefault(); });
+document.addEventListener('paste', function(e) { e.preventDefault(); });
+document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'a' || e.key === 's' || e.key === 'u')) {
+        e.preventDefault();
+    }
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C'))) {
+        e.preventDefault();
+    }
+});
+</script>
 
 <script>
 (function() {
