@@ -7,8 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Comginsoon - Something amazing is on the way. Stay tuned.">
-    <title>Comginsoon — Coming Soon</title>
+    <meta name="description" content="Itwillbe - Something amazing is on the way. Stay tuned.">
+    <title>Itwillbe</title>
     <link rel="icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,10 +49,10 @@
 
                 <!-- Arrows -->
                 <button class="showcase-arrow prev" id="prevBtn" aria-label="Previous">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
                 </button>
                 <button class="showcase-arrow next" id="nextBtn" aria-label="Next">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                    <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
                 </button>
 
                 <!-- Dots -->
@@ -67,8 +67,7 @@
 
             <!-- Title -->
             <h1 class="coming-title">
-                <span class="word">COMING</span>
-                <span class="word gradient">SOON</span>
+                <span class="word">Itwill</span><span class="word gradient">be</span>
             </h1>
 
             <p class="coming-subtitle">
@@ -111,7 +110,7 @@
     <!-- ===== Footer ===== -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; <?php echo date('Y'); ?> Comginsoon. All rights reserved.</p>
+            <p>&copy; <?php echo date('Y'); ?> Itwillbe. All rights reserved.</p>
             <div class="footer-links">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>

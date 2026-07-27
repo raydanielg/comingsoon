@@ -279,12 +279,12 @@ img {
 
 /* ===== Coming Soon Title ===== */
 .coming-title {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
     color: var(--dark);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     animation: fadeInUp 0.8s ease-out 0.15s both;
 }
 
@@ -380,8 +380,8 @@ img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(6px);
@@ -409,11 +409,11 @@ img {
 }
 
 .showcase-arrow.prev {
-    left: -8px;
+    left: -4px;
 }
 
 .showcase-arrow.next {
-    right: -8px;
+    right: -4px;
 }
 
 /* ===== Countdown ===== */
@@ -633,8 +633,8 @@ img {
 
     .showcase-arrow {
         opacity: 1;
-        width: 36px;
-        height: 36px;
+        width: 18px;
+        height: 18px;
     }
 
     .showcase-arrow.prev {
