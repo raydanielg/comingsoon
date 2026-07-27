@@ -380,8 +380,8 @@ img {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(6px);
@@ -633,8 +633,8 @@ img {
 
     .showcase-arrow {
         opacity: 1;
-        width: 18px;
-        height: 18px;
+        width: 12px;
+        height: 12px;
     }
 
     .showcase-arrow.prev {
