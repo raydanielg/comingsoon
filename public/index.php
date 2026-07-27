@@ -21,7 +21,7 @@
 
     <!-- ===== Hero ===== -->
     <section class="hero">
-        <div class="hero-bg"></div>
+        <canvas id="networkCanvas" class="network-canvas"></canvas>
         <div class="container">
 
             <!-- Image Showcase (transparent, no card) -->
@@ -112,6 +112,125 @@
     </footer>
 
 </div>
+
+<script>
+(function() {
+    // ===== Network Background =====
+    const canvas = document.getElementById('networkCanvas');
+    const ctx = canvas.getContext('2d');
+    let nodes = [];
+    let mouse = { x: -1000, y: -1000 };
+    const NODE_COUNT = 80;
+    const MAX_DISTANCE = 140;
+    const MOUSE_RADIUS = 180;
+
+    function resizeCanvas() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+
+    function createNodes() {
+        nodes = [];
+        for (let i = 0; i < NODE_COUNT; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                r: Math.random() * 2 + 1
+            });
+        }
+    }
+
+    function drawNetwork() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+
+            // Move
+            n.x += n.vx;
+            n.y += n.vy;
+
+            // Bounce edges
+            if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
+            if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+
+            // Mouse repulsion
+            const dx = n.x - mouse.x;
+            const dy = n.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < MOUSE_RADIUS && dist > 0) {
+                const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+                n.x += (dx / dist) * force * 2;
+                n.y += (dy / dist) * force * 2;
+            }
+
+            // Draw node
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(249, 115, 22, 0.5)';
+            ctx.fill();
+
+            // Draw connections
+            for (let j = i + 1; j < nodes.length; j++) {
+                const m = nodes[j];
+                const ddx = n.x - m.x;
+                const ddy = n.y - m.y;
+                const d = Math.sqrt(ddx * ddx + ddy * ddy);
+                if (d < MAX_DISTANCE) {
+                    const opacity = (1 - d / MAX_DISTANCE) * 0.3;
+                    ctx.beginPath();
+                    ctx.moveTo(n.x, n.y);
+                    ctx.lineTo(m.x, m.y);
+                    ctx.strokeStyle = 'rgba(249, 115, 22, ' + opacity + ')';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+
+            // Draw connection to mouse
+            if (dist < MOUSE_RADIUS) {
+                const opacity = (1 - dist / MOUSE_RADIUS) * 0.5;
+                ctx.beginPath();
+                ctx.moveTo(n.x, n.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.strokeStyle = 'rgba(245, 158, 11, ' + opacity + ')';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                // Mouse node
+                ctx.beginPath();
+                ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(245, 158, 11, 0.8)';
+                ctx.fill();
+            }
+        }
+
+        requestAnimationFrame(drawNetwork);
+    }
+
+    resizeCanvas();
+    createNodes();
+    drawNetwork();
+
+    window.addEventListener('resize', function() {
+        resizeCanvas();
+        createNodes();
+    });
+
+    document.addEventListener('mousemove', function(e) {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+
+    document.addEventListener('mouseleave', function() {
+        mouse.x = -1000;
+        mouse.y = -1000;
+    });
+})();
+</script>
 
 <script>
 (function() {
